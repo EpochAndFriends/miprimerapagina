@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        
+        nav .brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        .container-nav {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container-nav h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .container-nav p {
+            margin-bottom: 20px;
+        }
+        
+        .container-nav input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .container-nav .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .container-nav button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container .row {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .container .row .column {
+            flex: 1;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilo personalizado */
+        .ley-ohm-inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ley-ohm-inputs label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .ley-ohm-inputs input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        /* Estilo personalizado para los botones */
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .button-group button {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" role="navigation">
+            <a href="/index.html" class="brand">Mi página web</a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Calculadora</h1>
+        <h2>Operaciones Básicas</h2>
+        <div class="form-group">
+            <label for="num1">Número 1:</label>
+            <input type="text" id="num1" required>
+        </div>
+        <div class="form-group">
+            <label for="num2">Número 2:</label>
+            <input type="text" id="num2" required>
+        </div>
+        <div class="button-group">
+            <button onclick="sumar()">Sumar</button>
+            <button onclick="restar()">Restar</button>
+            <button onclick="multiplicar()">Multiplicar</button>
+            <button onclick="dividir()">Dividir</button>
+        </div>
+        <p id="resultadoBasico" class="resultado"></p>
+
+        <h2>Operaciones Aritméticas</h2>
+        <div class="form-group">
+            <label for="num3">Número 3:</label>
+            <input type="text" id="num3" required>
+        </div>
+        <div class="form-group">
+            <label for="num4">Número 4:</label>
+            <input type="text" id="num4" required>
+        </div>
+        <div class="button-group">
+            <button onclick="potencia()">Potencia</button>
+            <button onclick="raiz()">Raíz Cuadrada</button>
+            <button onclick="calcularResto()">Cálculo del Resto</button>
+        </div>
+        <p id="resultadoAritmetico" class="resultado"></p>
+
+        <h2>Ley de Ohm</h2>
+        <div class="ley-ohm-inputs">
+            <div class="form-group">
+                <label for="voltaje">Voltaje (V):</label>
+                <input type="text" id="voltaje" required>
+            </div>
+            <div class="form-group">
+                <label for="resistencia">Resistencia (Ω):</label>
+                <input type="text" id="resistencia" required>
+            </div>
+            <div class="form-group">
+                <label for="corriente">Corriente (A):</label>
+                <input type="text" id="corriente" required>
+            </div>
+        </div>
+        <div class="button-group">
+            <button onclick="calcularVoltaje()">Calcular Voltaje</button>
+            <button onclick="calcularCorriente()">Calcular Corriente</button>
+            <button onclick="calcularResistencia()">Calcular Resistencia</button>
+        </div>
+        <p id="resultadoOhm" class="resultado"></p>
+    </main>
+    <script>
+        // Funciones para las operaciones básicas
+        function sumar() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const resultado = num1 + num2;
+            document.getElementById("resultadoBasico").innerText = "Resultado: " + resultado;
+        }
+    
+        function restar() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const resultado = num1 - num2;
+            document.getElementById("resultadoBasico").innerText = "Resultado: " + resultado;
+        }
+    
+        function multiplicar() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const resultado = num1 * num2;
+            document.getElementById("resultadoBasico").innerText = "Resultado: " + resultado;
+        }
+    
+        function dividir() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const resultado = num1 / num2;
+            document.getElementById("resultadoBasico").innerText = "Resultado: " + resultado;
+        }
+    
+        // Funciones para las operaciones aritméticas
+        function potencia() {
+            const num3 = parseFloat(document.getElementById("num3").value);
+            const num4 = parseFloat(document.getElementById("num4").value);
+            const resultado = Math.pow(num3, num4);
+            document.getElementById("resultadoAritmetico").innerText = "Resultado: " + resultado;
+        }
+    
+        function raiz() {
+            const num3 = parseFloat(document.getElementById("num3").value);
+            const resultado = Math.sqrt(num3);
+            document.getElementById("resultadoAritmetico").innerText = "Resultado: " + resultado;
+        }
+    
+        function calcularResto() {
+            const num3 = parseFloat(document.getElementById("num3").value);
+            const num4 = parseFloat(document.getElementById("num4").value);
+            const resultado = num3 % num4;
+            document.getElementById("resultadoAritmetico").innerText = "Resultado: " + resultado;
+        }
+    
+        // Funciones para la ley de Ohm
+        function calcularVoltaje() {
+            const resistencia = parseFloat(document.getElementById("resistencia").value);
+            const corriente = parseFloat(document.getElementById("corriente").value);
+            const resultado = resistencia * corriente;
+            document.getElementById("resultadoOhm").innerText = "Voltaje (V): " + resultado;
+        }
+    
+        function calcularCorriente() {
+            const voltaje = parseFloat(document.getElementById("voltaje").value);
+            const resistencia = parseFloat(document.getElementById("resistencia").value);
+            const resultado = voltaje / resistencia;
+            document.getElementById("resultadoOhm").innerText = "Corriente (A): " + resultado;
+        }
+    
+        function calcularResistencia() {
+            const voltaje = parseFloat(document.getElementById("voltaje").value);
+            const corriente = parseFloat(document.getElementById("corriente").value);
+            const resultado = voltaje / corriente;
+            document.getElementById("resultadoOhm").innerText = "Resistencia (Ω): " + resultado;
+        }
+    </script>
+
+
+
+    <footer>
+        <!-- Aquí va el contenido del footer -->
+    </footer>
+</body>
+</html>

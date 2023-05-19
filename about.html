@@ -7,40 +7,94 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
     <style>
-        /* Estilos personalizados para la galería de fotos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav .brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 10px;
         }
 
         .gallery img {
-            width: 800px; /* Tamaño fijo para las imágenes */
+            max-width: 400px;
             height: auto;
-            margin: 10px;
+            transition: transform 0.5s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.4);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <header>
         <!-- Aquí puedes agregar tu encabezado -->
-        <h1>Encabezado de la página</h1>
+        <nav class="navbar" role="navigation">
+            <a href="index.html" class="brand">Mi página web</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav class="navbar" role="navigation">
-        <a href="index.html" class="brand">Mi página web</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    
     <main>
         <!-- Contenido de la página "About" -->
         <h2>Galería de Fotos</h2>
-        
+
         <div class="gallery">
             <img src="/fotos/calendario.png" alt="Imagen 1">
             <img src="/fotos/epochhoyy.png" alt="Imagen 2">
@@ -53,7 +107,7 @@
             <img src="/fotos/DALL·E 2023-01-09 00.44.14 - Digital art, very dangerous rain forest at dawn while raining, weird orb lights and plants.png" alt="">
         </div>
     </main>
-    
+
     <footer>
         <!-- Aquí puedes agregar tu pie de página -->
         <p>Pie de página de la página web</p>

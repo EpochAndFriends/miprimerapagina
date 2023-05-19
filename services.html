@@ -5,32 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+nav .brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.container-nav {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-nav h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.container-nav p {
+  margin-bottom: 20px;
+}
+
+.container-nav input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.container-nav .button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.container-nav button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container .row {
+  display: flex;
+  gap: 10px;
+}
+
+.container .row .column {
+  flex: 1;
+}
+
+footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
     <script src="script.js"></script>
 </head>
 <body>
     <header>
-        <!-- Aquí puedes agregar tu encabezado -->
-        <h1>Encabezado de la página</h1>
+        <nav class="navbar" role="navigation">
+            <a href="index.html" class="brand">Mi página web</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <nav class="navbar" role="navigation">
-        <a href="paginaCopia.html" class="brand">Mi página web</a>
-        <ul class="nav-links">
-            <li><a href="paginaCopia.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
     
     <main>
         <div class="container-nav">
             <h1>Nuestros servicios</h1>
             <p>Descubre aquí los servicios que ofrecemos.</p>
             <ul>
-                <li><a href="calculadora.html">Calculadora</a></li>
-                <li><a href="App-de-tareas.html">App de Tareas</a></li>
-                <li>Servicio 3</li>
+                <li><a href="./servicios/calculadora/calculadora.html">Calculadora</a></li>
+                <li><a href="./servicios/tareas/app-de-tareas.html">App de Tareas</a></li>
+                <li><a href="./servicios/texto/app-de-texto.html">App de Texto</a></li>
             </ul>
         </div>
         

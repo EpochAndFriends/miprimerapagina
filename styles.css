@@ -1,38 +1,89 @@
-/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-/* Estilos generales para el menú de navegación */
-.navbar {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: center; /* Centrar el contenido del menú */
-  }
-  
-  .nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-links li {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  .nav-links li a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-size: 20px; /* Aumentar el tamaño del texto */
-  }
-  
-  .nav-links li a:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .brand {
-    font-weight: bold;
-    font-size: 24px; /* Aumentar el tamaño del texto del logotipo */
-  }
-  
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+nav .brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.container-nav {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-nav h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.container-nav p {
+  margin-bottom: 20px;
+}
+
+.container-nav input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.container-nav .button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.container-nav button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container .row {
+  display: flex;
+  gap: 10px;
+}
+
+.container .row .column {
+  flex: 1;
+}

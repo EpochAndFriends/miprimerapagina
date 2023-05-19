@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Tareas</title>
+    <style>
+        /* Estilos de la barra de navegación */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Estilos específicos de la página de tareas */
+        .tarea {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Aquí puedes agregar tu encabezado -->
+        <h1>Encabezado de la página</h1>
+    </header>
+
+    <nav class="navbar" role="navigation">
+        <a href="index.html" class="brand">Mi página web</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>App de Tareas</h1>
+        <h2>Listado de Tareas</h2>
+        <div id="lista-tareas"></div>
+        <h2>Agregar Nueva Tarea</h2>
+        <form id="formulario-tarea">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" required>
+            <label for="estado">Estado:</label>
+            <select id="estado" required>
+                <option value="terminado">Terminado</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="en proceso">En Proceso</option>
+            </select>
+            <button type="submit">Agregar</button>
+        </form>
+        <h2>Filtrar Tareas por Estado</h2>
+        <form id="formulario-filtrar">
+            <label for="estado-filtrar">Estado:</label>
+            <select id="estado-filtrar" required>
+                <option value="terminado">Terminado</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="en proceso">En Proceso</option>
+            </select>
+            <button type="submit">Filtrar</button>
+        </form>
+        <h2>Editar Tarea</h2>
+        <form id="formulario-editar">
+            <label for="id-editar">ID:</label>
+            <input type="text" id="id-editar" required>
+            <label for="estado-editar">Nuevo Estado:</label>
+            <select id="estado-editar" required>
+                <option value="terminado">Terminado</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="en proceso">En Proceso</option>
+            </select>
+            <button type="submit">Editar</button>
+        </form>
+        <h2>Eliminar Tarea</h2>
+        <form id="formulario-eliminar">
+            <label for="id-eliminar">ID:</label>
+            <input type="text" id="id-eliminar" required>
+            <button type="submit">Eliminar</button>
+        </form>
+    </main>
+
+    <footer>
+        <!-- Aquí puedes agregar tu pie de página -->
+        <p>Pie de página</p>
+    </footer>
+
+    <script src="./app-tareas/funcionesDeTareas.js"></script>
+  <script>
+    // Leer tareas desde el almacenamiento local
+    function leerTareas() {
+  const tareasString = localStorage.getItem('tareas');
+  if (tareasString) {
+    const tareas = JSON.parse(tareasString);
+    tareas.forEach((tarea, index) => {
+      if (!tarea.ID) {
+        tarea.ID = index + 1;
+      }
+    });
+    return tareas;
+  }
+  return [];
+}
+
+
+    // Guardar tareas en el almacenamiento local
+    function guardarTareas(tareas) {
+      localStorage.setItem('tareas', JSON.stringify(tareas));
+    }
+
+    // Mostrar las tareas en la lista
+    function mostrarTareas() {
+      const listaTareas = document.getElementById('lista-tareas');
+      listaTareas.innerHTML = '';
+
+      const tareas = leerTareas();
+      tareas.forEach((tarea, index) => {
+        const tareaElement = document.createElement('div');
+        tareaElement.className = 'tarea';
+        tareaElement.textContent = `${index + 1}. ${tarea.titulo} - Estado: ${tarea.estado} - ID: ${tarea.ID} - Fecha: ${tarea.Fecha}`;
+        listaTareas.appendChild(tareaElement);
+      });
+    }
+
+    // Agregar una nueva tarea
+    function agregarTarea(event) {
+      event.preventDefault();
+
+      const titulo = document.getElementById('titulo').value;
+      const estado = document.getElementById('estado').value;
+
+      const nuevaTarea = {
+        titulo,
+        estado,
+        ID: leerTareas().length + 1,
+        Fecha: obtenerFechaActual()
+      };
+
+      const tareas = leerTareas();
+      tareas.push(nuevaTarea);
+      guardarTareas(tareas);
+
+      document.getElementById('titulo').value = '';
+      document.getElementById('estado').value = 'terminado';
+
+      mostrarTareas();
+    }
+
+    // Filtrar tareas por estado
+    function filtrarTareas(event) {
+      event.preventDefault();
+
+      const estadoFiltrar = document.getElementById('estado-filtrar').value;
+      const tareasFiltradas = leerTareas().filter(tarea => tarea.estado === estadoFiltrar);
+
+      const listaTareas = document.getElementById('lista-tareas');
+      listaTareas.innerHTML = '';
+
+      tareasFiltradas.forEach((tarea, index) => {
+        const tareaElement = document.createElement('div');
+        tareaElement.className = 'tarea';
+        tareaElement.textContent = `${index + 1}. ${tarea.titulo} - Estado: ${tarea.estado} - ID: ${tarea.ID} - Fecha: ${tarea.Fecha}`;
+        listaTareas.appendChild(tareaElement);
+      });
+    }
+
+    // Editar una tarea por su ID
+    function editarTarea(event) {
+  event.preventDefault();
+
+  const idEditar = parseInt(document.getElementById('id-editar').value);
+  const nuevoEstado = document.getElementById('estado-editar').value;
+
+  const tareas = leerTareas();
+  const tareaEncontrada = tareas.find(tarea => tarea.ID === idEditar);
+
+  if (tareaEncontrada) {
+    tareaEncontrada.estado = nuevoEstado;
+    guardarTareas(tareas);
+    mostrarTareas();
+    alert(`Estado de la tarea con ID ${idEditar} editado correctamente a ${nuevoEstado}.`);
+  } else {
+    alert(`No se encontró ninguna tarea con el ID ${idEditar}.`);
+  }
+
+  document.getElementById('id-editar').value = '';
+  document.getElementById('estado-editar').value = 'terminado';
+}
+
+function eliminarTarea(event) {
+  event.preventDefault();
+
+  const idEliminar = parseInt(document.getElementById('id-eliminar').value);
+
+  const tareas = leerTareas();
+  const tareasFiltradas = tareas.filter(tarea => tarea.ID !== idEliminar);
+
+  if (tareasFiltradas.length < tareas.length) {
+    guardarTareas(tareasFiltradas);
+    mostrarTareas();
+    alert(`La tarea con ID ${idEliminar} ha sido eliminada correctamente.`);
+  } else {
+    alert(`No se encontró ninguna tarea con el ID ${idEliminar}.`);
+  }
+
+  document.getElementById('id-eliminar').value = '';
+}
+
+
+    // Obtener la fecha actual en formato "día/mes/año"
+    function obtenerFechaActual() {
+      const fechaActual = new Date();
+      const dia = fechaActual.getDate();
+      const mes = fechaActual.getMonth() + 1;
+      const anio = fechaActual.getFullYear();
+
+      return `${dia}/${mes}/${anio}`;
+    }
+
+    // Cargar las tareas al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      mostrarTareas();
+    });
+
+    // Escuchar eventos de los formularios
+    document.getElementById('formulario-tarea').addEventListener('submit', agregarTarea);
+    document.getElementById('formulario-filtrar').addEventListener('submit', filtrarTareas);
+    document.getElementById('formulario-editar').addEventListener('submit', editarTarea);
+    document.getElementById('formulario-eliminar').addEventListener('submit', eliminarTarea);
+  </script>
+</body>
+</html>

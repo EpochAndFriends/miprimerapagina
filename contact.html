@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -106,8 +106,17 @@
             left: 0;
             width: 100%;
         }
+
+        @keyframes play {
+            from {
+                background-position-x: 0;
+            }
+            to {
+                background-position-x: -700px;
+            }
+        }
     </style>
-    <script src="script.js"></script>
+    <script src="contact.js"></script>
 </head>
 <body>
     <header>
@@ -133,6 +142,14 @@
             <button type="submit">Enviar</button>
             <div id="message" class="message"></div> <!-- Elemento para mostrar el mensaje -->
         </form>
+
+        <div id="isaac">
+            <audio id="audio" src="/LISA： The Painful OST - Shardy's Shanty.mp3"></audio>
+          
+            <img id="image" src="/gif/Screenshot_6.png" alt="Imagen inicial">
+          
+            <img id="gif" src="/gif/isaac.gif" alt="Gif de Isaac" style="display: none;">
+          </div>
     </main>
     
     <footer>

@@ -1,29 +1,35 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("contactForm");
+  // Resto del código
+
+  // Cargar el archivo de audio
+  let audio = new Audio("ruta/al/archivo.mp3");
+  audio.load();
+
+  // Resto del código
+});
   
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-      validateForm();
-    });
+  let gifs = [
+    "/gif/tumblr_895a918373adcb324eed736156585391_c4b2730c_400.gif",
+    "/gif/tumblr_29e8b358b23e3f5acca3efe237cd082b_ec564d54_400.gif",
+    "/gif/Spr_tv_tumble_0.gif",
+    "/gif/Spr_tv_ghost_0.gif",
+    "/gif/Spr_tv_firemouth_0.gif",
+    "/gif/Spr_tv_cheeseball_0.gif",
+    "/gif/Spr_tv_barrel_0.gif",
+    "/gif/pizza-tower-peppino-spaghetti.gif",
+    "/gif/mr-peppino-tv-hud-knight-pizza-tower-gif.gif",
+    "/gif/edvsn0j4sdqa1.gif",
+    "/gif/Peppinofireassnewhud.gif",
+  ];
   
-    function validateForm() {
-      const emailInput = document.getElementById("email");
-      const email = emailInput.value;
+  let gifIndex = 0;
   
-      if (!validateEmail(email)) {
-        alert("Por favor ingrese un correo electrónico válido.");
-      } else {
-        alert("Correo electrónico enviado correctamente.");
-      }
-    }
+  function changeGif() {
+    let gif = document.getElementById("gif");
+    gifIndex = (gifIndex + 1) % gifs.length;
+    gif.src = gifs[gifIndex];
   
-    function validateEmail(email) {
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,7}$/;
-      return regex.test(email);
-    }
+    audio.play(); // Reproducir el audio previamente cargado
+  }
   
-    document.querySelector("button.button-menu-toggle").addEventListener("click", function() {
-      document.querySelector(".nav-links").classList.toggle("nav-links-responsive");
-    });
-  });
-  
+  const gif = document.getElementById("gif");

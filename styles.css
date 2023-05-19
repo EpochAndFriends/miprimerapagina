@@ -87,3 +87,14 @@ main {
 .container .row .column {
   flex: 1;
 }
+
+#gifContainer {
+  position: fixed;
+  top: 150px;
+  right: 5px;
+}
+
+#gif {
+  width: 400px;
+  height: 400px;
+}

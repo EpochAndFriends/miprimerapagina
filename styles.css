@@ -1,0 +1,38 @@
+/* styles.css */
+
+/* Estilos generales para el menú de navegación */
+.navbar {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center; /* Centrar el contenido del menú */
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 20px; /* Aumentar el tamaño del texto */
+  }
+  
+  .nav-links li a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .brand {
+    font-weight: bold;
+    font-size: 24px; /* Aumentar el tamaño del texto del logotipo */
+  }
+  

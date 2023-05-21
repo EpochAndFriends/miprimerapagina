@@ -282,6 +282,11 @@ function eliminarTarea(event) {
   const tareasFiltradas = tareas.filter(tarea => tarea.ID !== idEliminar);
 
   if (tareasFiltradas.length < tareas.length) {
+    // Actualizar las ID de las tareas restantes
+    tareasFiltradas.forEach((tarea, index) => {
+      tarea.ID = index + 1;
+    });
+
     guardarTareas(tareasFiltradas);
     mostrarTareas();
     alert(`La tarea con ID ${idEliminar} ha sido eliminada correctamente.`);
@@ -291,6 +296,7 @@ function eliminarTarea(event) {
 
   document.getElementById('id-eliminar').value = '';
 }
+
 
 
     // Obtener la fecha actual en formato "día/mes/año"

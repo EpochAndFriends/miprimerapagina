@@ -128,7 +128,7 @@
         
 
         <div id="gifContainer">
-            <audio id="audio" src="/peppino-scream_oYaUb09.mp3"></audio>
+            <audio id="audio" src="peppino-scream_oYaUb09.mp3"></audio>
 
             <img id="gif" src="tumblr_895a918373adcb324eed736156585391_c4b2730c_400.gif" alt="Gif inicial" onclick="changeGif()">
 
@@ -144,13 +144,13 @@
             // Resto del código
 
             // Cargar el archivo de audio
-            let audio = new Audio("peppino-scream_oYaUb09.mp3");
+            var audio = new Audio("peppino-scream_oYaUb09.mp3");
             audio.load();
 
             // Resto del código
         });
 
-        let gifs = [
+        var gifs = [
             "tumblr_895a918373adcb324eed736156585391_c4b2730c_400.gif",
             "tumblr_29e8b358b23e3f5acca3efe237cd082b_ec564d54_400.gif",
             "Spr_tv_tumble_0.gif",
@@ -164,14 +164,14 @@
             "Peppinofireassnewhud.gif",
         ];
 
-        let gifIndex = 0;
+        var gifIndex = 0;
 
         function changeGif() {
-            let gif = document.getElementById("gif");
+            var gif = document.getElementById("gif");
             gifIndex = (gifIndex + 1) % gifs.length;
             gif.src = gifs[gifIndex];
 
-            let audio = document.getElementById("audio");
+            var audio = document.getElementById("audio");
             audio.currentTime = 0.1;
             audio.play();
         }

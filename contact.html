@@ -107,13 +107,18 @@
             width: 100%;
         }
 
-        @keyframes play {
-            from {
-                background-position-x: 0;
-            }
-            to {
-                background-position-x: -700px;
-            }
+        #isaac {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        #gif {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
         }
     </style>
     <script>
@@ -229,15 +234,11 @@
             <button type="submit">Enviar</button>
             <div id="message" class="message"></div> <!-- Elemento para mostrar el mensaje -->
         </form>
-
         <div id="isaac">
-            <audio id="audio" src="LISA： The Painful OST - Shardy's Shanty.mp3"></audio>
-          
-            <img id="image" src="Screenshot_6.png" alt="Imagen inicial">
-          
-            <img id="gif" src="isaac.gif" alt="Gif de Isaac" style="display: none;">
-          </div>
-    </main>
+          <audio id="audio" src="LISA： The Painful OST - Shardy's Shanty.mp3"></audio>
+          <img id="image" src="Screenshot_6.png" alt="Imagen inicial">
+          <img id="gif" src="isaac.gif" alt="Gif de Isaac">
+      </div>
     
     <footer>
         <!-- Aquí puedes agregar tu pie de página -->

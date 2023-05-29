@@ -1,14 +1,14 @@
 var gifs = [
-    "ypepino1.gif",
-    "ypepino2.gif",
-    "ypepino3.gif",
-    "ypepino4.gif",
-    "ypepino5.gif",
-    "ypepino6.gif",
-    "ypepino7.gif",
-    "ypepino8.gif",
-    "ypepino9.gif",
-    "ypepino10.gif"
+    "gif/ypepino1.gif",
+    "gif/ypepino2.gif",
+    "gif/ypepino3.gif",
+    "gif/ypepino4.gif",
+    "gif/ypepino5.gif",
+    "gif/ypepino6.gif",
+    "gif/ypepino7.gif",
+    "gif/ypepino8.gif",
+    "gif/ypepino9.gif",
+    "gif/ypepino10.gif"
 ];
 
 var gifIndex = 0;

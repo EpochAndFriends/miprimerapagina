@@ -91,9 +91,9 @@ main {
 #gifContainer {
   position: relative;
   top: 0;
-  left: 0; /* Cambiado de "right: 0" a "left: 0" */
-  bottom: 0; /* Agregado para que el gif alcance hasta abajo */
-  z-index: 99; /* Agregado para que el gif esté detrás de los demás elementos */
+  left: 0;
+  bottom: 0;
+  z-index: 99;
 }
 
 #gif {
@@ -131,3 +131,14 @@ footer {
   width: 100%;
 }
 
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+  #gifContainer {
+    height: 200px; /* Ajustar la altura del contenedor en dispositivos móviles */
+  }
+
+  #gif {
+    width: 100%; /* Ajustar el ancho del GIF al 100% en dispositivos móviles */
+    height: 100%; /* Ajustar la altura del GIF al 100% en dispositivos móviles */
+  }
+}

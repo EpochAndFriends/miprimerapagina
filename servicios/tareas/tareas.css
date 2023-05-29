@@ -88,33 +88,14 @@ body {
     flex: 1;
   }
   
-  #gifContainer {
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
     position: fixed;
-    top: 150px;
-    right: 5px;
-  }
-  
-  #gif {
-    width: 400px;
-    height: 400px;
-  }
-
-  #isaac {
-    position: relative;
-  }
-  
-  #gif {
-    position: absolute;
+    bottom: 0;
     left: 0;
-    top: 0;
-    width: 20%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: none;
-  }
-  
-  #image {
-    display: block;
+    width: 100%;
   }
   

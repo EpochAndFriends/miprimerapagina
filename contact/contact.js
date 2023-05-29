@@ -28,47 +28,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const gifContainer = document.getElementById("isaac");
   const gif = document.getElementById("gif");
-  const image = document.getElementById("image");
   const audio = document.getElementById("audio");
   let isGifHovered = false;
 
   gifContainer.addEventListener("mouseenter", function() {
     isGifHovered = true;
-    audio.play();
+    if (audio.paused) {
+      audio.currentTime = 0;
+      audio.play();
+    }
     animateGif();
   });
 
   gifContainer.addEventListener("mouseleave", function() {
     isGifHovered = false;
     gif.classList.remove("gif-hover");
-    audio.pause();
-    audio.currentTime = 0;
-  });
-
-  image.addEventListener("mouseenter", function() {
-    isGifHovered = true;
-    gif.style.display = "block";
-    image.style.display = "none";
-    audio.play();
-    animateGif();
-  });
-
-  gifContainer.addEventListener("mouseleave", function() {
-    isGifHovered = false;
-    gif.classList.remove("gif-hover");
-    gif.style.display = "none";
-    image.style.display = "block";
-    audio.pause();
-    audio.currentTime = 0;
   });
 
   gifContainer.addEventListener("mousemove", function(event) {
     if (isGifHovered) {
-      const rect = gifContainer.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      gif.style.left = `${x}px`;
-      gif.style.top = `${y}px`;
+      gif.style.display = "block";
+      gif.classList.add("gif-hover");
+
+      // Ajustar la posición del gif para que se encuentre directamente sobre el cursor
+      gif.style.left = `${event.clientX}px`;
+      gif.style.top = `${event.clientY - gif.offsetHeight}px`; // Restar la altura del gif para compensar
     }
   });
 
@@ -76,11 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isGifHovered) {
       gif.style.display = "block";
       gif.classList.add("gif-hover");
+      audio.volume = 1;
       requestAnimationFrame(animateGif);
     } else {
       gif.style.display = "none";
       gif.classList.remove("gif-hover");
+      audio.volume = 0;
     }
   }
-  
 });

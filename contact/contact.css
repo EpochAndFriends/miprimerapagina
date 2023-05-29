@@ -1,0 +1,133 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+nav .brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.container-nav {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-nav h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.container-nav p {
+  margin-bottom: 20px;
+}
+
+.container-nav input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.container-nav .button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.container-nav button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container .row {
+  display: flex;
+  gap: 10px;
+}
+
+.container .row .column {
+  flex: 1;
+}
+
+#gifContainer {
+  position: relative;
+  top: 0;
+  left: 0; /* Cambiado de "right: 0" a "left: 0" */
+  bottom: 0; /* Agregado para que el gif alcance hasta abajo */
+  z-index: 99; /* Agregado para que el gif esté detrás de los demás elementos */
+}
+
+#gif {
+  width: 400px;
+  height: 400px;
+}
+
+#isaac {
+  position: relative;
+}
+
+#gif {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
+}
+
+#image {
+  display: block;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+

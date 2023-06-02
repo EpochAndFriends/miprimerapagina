@@ -1,0 +1,33 @@
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu li {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    background: #fff;
+    padding: 10px;
+  }
+  
+  .menu li:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li {
+    display: block;
+  }
+  

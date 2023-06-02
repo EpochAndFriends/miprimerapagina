@@ -1,0 +1,73 @@
+/* Animación de desplazamiento del encabezado */
+@keyframes scrollAnimation {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .scroll-animation {
+    animation: scrollAnimation 1s ease-out;
+  }
+  
+  /* Animación de carga */
+  @keyframes loadingAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .loading-animation {
+    animation: loadingAnimation 1s infinite;
+  }
+  
+  .loader {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    animation: loadingAnimation 1s infinite;
+  }
+  
+  /* Transición de página */
+  .page-transition {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .page-transition.active {
+    opacity: 1;
+  }
+  
+  /* Animación del carrusel */
+  .carousel {
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .carousel img {
+    width: 100%;
+    transition: transform 0.5s;
+  }
+  
+  .carousel img:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Animación de interacción de usuario */
+  .interaction-form {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .interaction-form.active {
+    opacity: 1;
+  }
+  

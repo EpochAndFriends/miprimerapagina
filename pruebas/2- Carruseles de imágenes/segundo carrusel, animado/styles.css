@@ -1,0 +1,80 @@
+.carousel {
+  position: relative;
+}
+
+.carousel .carousel-slides {
+  display: flex;
+  align-items: center;
+}
+
+.carousel .carousel-image {
+  width: 100%;
+  height: auto;
+}
+
+.carousel .carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.carousel .carousel-control {
+  font-size: 24px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.carousel .carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.carousel .carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel .carousel-indicator.active {
+  opacity: 1;
+}
+
+.carousel .carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+.carousel .caption-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.carousel .caption-description {
+  font-size: 14px;
+}

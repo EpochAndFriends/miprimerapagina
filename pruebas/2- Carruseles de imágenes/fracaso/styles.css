@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* display: none; */ /* Comenta esta línea para que las imágenes sean visibles */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.carousel-fade {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.carousel-slide-up {
+  transform: translateY(100%);
+  transition: transform 1s ease;
+}
+
+.carousel-slide-down {
+  transform: translateY(-100%);
+  transition: transform 1s ease;
+}
+
+.carousel-slide-left {
+  transform: translateX(-100%);
+  transition: transform 1s ease;
+}
+
+.carousel-slide-right {
+  transform: translateX(100%);
+  transition: transform 1s ease;
+}
+
+.carousel-zoom-in {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.carousel-zoom-out {
+  opacity: 0;
+  transform: scale(2);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+}
+
+.carousel-caption .caption-title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.carousel-caption .caption-description {
+  margin: 0;
+  font-size: 16px;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #888;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+}
+
+.carousel-indicator:focus {
+  outline: none;
+}
+
+.carousel-transition-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.transition-button {
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.transition-button.active {
+  background-color: #666;
+}
+
+.transition-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

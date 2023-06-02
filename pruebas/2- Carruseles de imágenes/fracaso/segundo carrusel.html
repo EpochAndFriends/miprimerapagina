@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Carousel</title>
+</head>
+<body>
+  <div class="carousel">
+    <div class="carousel-image carousel-fade">
+      <img src="../../../png/Zdibujo-calendario.png" alt="Image 1">
+      <div class="carousel-caption">
+        <h3 class="caption-title">Image 1</h3>
+        <p class="caption-description">This is the first image.</p>
+      </div>
+    </div>
+    <div class="carousel-image carousel-fade">
+      <img src="../../../png/Zdibujo-hoy.png" alt="Image 2">
+      <div class="carousel-caption">
+        <h3 class="caption-title">Image 2</h3>
+        <p class="caption-description">This is the second image.</p>
+      </div>
+    </div>
+    <div class="carousel-image carousel-fade">
+      <img src="../../../png/Zdibujo-myafisi.png" alt="Image 3">
+      <div class="carousel-caption">
+        <h3 class="caption-title">Image 3</h3>
+        <p class="caption-description">This is the third image.</p>
+      </div>
+    </div>
+    <div class="carousel-image carousel-fade">
+      <img src="../../../png/Zdibujo-jeremias.png" alt="Image 4">
+      <div class="carousel-caption">
+        <h3 class="caption-title">Image 4</h3>
+        <p class="caption-description">This is the fourth image.</p>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-button prev">Prev</button>
+      <button class="carousel-button next">Next</button>
+    </div>
+    <div class="carousel-indicators">
+      <button class="carousel-indicator"></button>
+      <button class="carousel-indicator"></button>
+      <button class="carousel-indicator"></button>
+      <button class="carousel-indicator"></button>
+    </div>
+    <div class="carousel-transition-controls">
+      <button class="transition-button active" data-transition="fade">Fade</button>
+      <button class="transition-button" data-transition="slide-up">Slide Up</button>
+      <button class="transition-button" data-transition="slide-down">Slide Down</button>
+      <button class="transition-button" data-transition="slide-left">Slide Left</button>
+      <button class="transition-button" data-transition="slide-right">Slide Right</button>
+      <button class="transition-button" data-transition="zoom-in">Zoom In</button>
+      <button class="transition-button" data-transition="zoom-out">Zoom Out</button>
+    </div>
+  </div>
+  <script>
+    var slides = document.querySelectorAll('.carousel-image');
+    var prevButton = document.querySelector('.prev');
+    var nextButton = document.querySelector('.next');
+    var indicators = document.querySelectorAll('.carousel-indicator');
+    var transitionButtons = document.querySelectorAll('.transition-button');
+
+    var currentSlide = 0;
+    var transition = 'fade';
+
+    function showSlide(index) {
+      // Ocultar todas las diapositivas
+      slides.forEach(function(slide) {
+        slide.style.display = 'none';
+      });
+
+      // Desactivar todas las indicadores
+      indicators.forEach(function(indicator) {
+        indicator.classList.remove('active');
+      });
+
+      // Mostrar la diapositiva actual
+      slides[index].style.display = 'flex';
+      indicators[index].classList.add('active');
+    }
+
+    function slideTo(index) {
+      showSlide(index);
+      currentSlide = index;
+    }
+
+    function slidePrev() {
+      currentSlide--;
+      if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
+      showSlide(currentSlide);
+    }
+
+    function slideNext() {
+      currentSlide++;
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
+      showSlide(currentSlide);
+    }
+
+    function changeTransition(newTransition) {
+      // Eliminar la clase de transición actual
+      slides[currentSlide].classList.remove(transition);
+
+      // Asignar la nueva clase de transición
+      transition = newTransition;
+      slides[currentSlide].classList.add(transition);
+    }
+
+    // Mostrar la primera diapositiva y activar el primer indicador
+    showSlide(currentSlide);
+
+    // Eventos de botón
+    prevButton.addEventListener('click', slidePrev);
+    nextButton.addEventListener('click', slideNext);
+
+    // Eventos de indicador
+    indicators.forEach(function(indicator, index) {
+      indicator.addEventListener('click', function() {
+        slideTo(index);
+      });
+    });
+
+    // Eventos de botón de transición
+    transitionButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        if (!button.classList.contains('active')) {
+          transitionButtons.forEach(function(btn) {
+            btn.classList.remove('active');
+          });
+          button.classList.add('active');
+          var newTransition = button.getAttribute('data-transition');
+          changeTransition(newTransition);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

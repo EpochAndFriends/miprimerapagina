@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Efecto de Desplazamiento Horizontal</title>
+  <style>
+    /* Estilos personalizados */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Evita que se muestre la barra de desplazamiento horizontal */
+    }
+    .section {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .background-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../../../png/Zdibujo-hoy.png'); /* Reemplaza 'background.jpg' con la ruta de tu imagen de fondo */
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      transform: translateZ(-1px) scale(2); /* Efecto de parallax */
+      animation: parallax 10s infinite linear; /* Animación del parallax */
+    }
+    .content {
+      opacity: 0;
+      animation: fade-in 1s ease-in-out forwards; /* Animación de desvanecimiento */
+    }
+    
+    @keyframes fade-in {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes parallax {
+      0% { transform: translateZ(-1px) scale(2); }
+      100% { transform: translateZ(-1px) scale(3); }
+    }
+    
+    #section1 {
+      background-color: #f2f2f2;
+    }
+    #section2 {
+      background-color: #eaeaea;
+    }
+    #section3 {
+      background-color: #dcdcdc;
+    }
+    
+    /* Estilos de las imágenes */
+    .content img {
+      max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+      height: auto; /* Ajusta la altura de la imagen de forma proporcional */
+    }
+    
+    /* Estilos del cuadro de texto */
+    .content .text-box {
+      margin-left: 20px; /* Espacio a la izquierda de la imagen */
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="section1" class="section">
+    <div class="background-layer"></div>
+    <div class="content">
+      <h2>Sección 1</h2>
+      <p>Contenido de la sección 1</p>
+      <div class="image-container">
+        <img src="../../../png/Zdibujo-calendario.png" alt="Imagen 1"> <!-- Reemplaza 'image1.jpg' con la ruta de tu imagen -->
+        <div class="text-box">
+          <p>Cuadro de texto al lado de la imagen</p>
+        </div>
+      </div>
+      <button class="btn">Animar</button>
+    </div>
+  </div>
+  <div id="section2" class="section">
+    <div class="background-layer"></div>
+    <div class="content">
+      <h2>Sección 2</h2>
+      <p>Contenido de la sección 2</p>
+      <div class="image-container">
+        <img src="../../../png/Zdibujo-vicentina.jpg" alt="Imagen 2"> <!-- Reemplaza 'image2.jpg' con la ruta de tu imagen -->
+        <div class="text-box">
+          <p>Cuadro de texto al lado de la imagen</p>
+        </div>
+      </div>
+      <div class="slider">
+        <input type="range" min="0" max="100" value="0" class="slider-range">
+      </div>
+    </div>
+  </div>
+  <div id="section3" class="section">
+    <div class="background-layer"></div>
+    <div class="content">
+      <h2>Sección 3</h2>
+      <p>Contenido de la sección 3</p>
+      <div class="image-container">
+        <img src="../../../png/Zdibujo-daniel.png" alt="Imagen 3"> <!-- Reemplaza 'image3.jpg' con la ruta de tu imagen -->
+        <div class="text-box">
+          <p>Cuadro de texto al lado de la imagen</p>
+        </div>
+      </div>
+      <div class="animated-element"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+  <script>
+    // Inicializar ScrollMagic
+    var controller = new ScrollMagic.Controller();
+
+    // Crear escena para cada sección
+    var sections = document.querySelectorAll('.section');
+    sections.forEach(function(section, index) {
+      var backgroundLayer = section.querySelector('.background-layer');
+      var content = section.querySelector('.content');
+      var btn = section.querySelector('.btn');
+      var slider = section.querySelector('.slider-range');
+      var animatedElement = section.querySelector('.animated-element');
+      
+      // Animación de desplazamiento horizontal
+      var horizontalTween = gsap.to(section, { x: -index * 100 + '%', ease: Linear.easeNone });
+      
+      // Animación de desvanecimiento
+      var fadeInTween = gsap.to(content, { opacity: 1 });
+      
+      // Animación del botón
+      var btnTween = gsap.fromTo(btn, { scale: 0 }, { scale: 1, duration: 1, ease: 'elastic' });
+      
+      // Animación del control deslizante
+      var sliderTween = gsap.to(slider, { value: 100, duration: 2, ease: 'power2.inOut' });
+      
+      // Animación de transformación
+      var transformTween = gsap.to(animatedElement, { rotation: 360, scale: 1.5, duration: 2, repeat: -1, yoyo: true });
+
+      new ScrollMagic.Scene({
+          triggerElement: section,
+          triggerHook: 'onLeave',
+          duration: '100%' // Ajusta la duración según sea necesario
+        })
+        .setPin(section)
+        .setTween(horizontalTween)
+        .addTo(controller);
+      
+      new ScrollMagic.Scene({
+          triggerElement: section,
+          triggerHook: 0.8,
+        })
+        .setTween(fadeInTween)
+        .addTo(controller);
+      
+      new ScrollMagic.Scene({
+          triggerElement: section,
+          triggerHook: 0.5,
+        })
+        .setTween(btnTween)
+        .addTo(controller);
+      
+      new ScrollMagic.Scene({
+          triggerElement: section,
+          triggerHook: 0.5,
+        })
+        .setTween(sliderTween)
+        .addTo(controller);
+      
+      new ScrollMagic.Scene({
+          triggerElement: section,
+          triggerHook: 0.5,
+        })
+        .setTween(transformTween)
+        .addTo(controller);
+    });
+  </script>
+</body>
+</html>

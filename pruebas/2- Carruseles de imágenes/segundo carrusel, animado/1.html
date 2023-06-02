@@ -2,38 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Carrusel de Imágenes</title>
-  <link rel="stylesheet" href="../../../plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="../../../plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+  <title>Carrusel de Testimonios</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="carousel owl-carousel">
-    <div class="carousel-slides">
-      <img src="../../../png/Zdibujo-hoy.png" alt="Imagen 1" class="carousel-image">
-      <img src="../../../png/Zdibujo-calendario.png" alt="Imagen 2" class="carousel-image">
-      <img src="../../../png/Zdibujo-myafisi.png" alt="Imagen 3" class="carousel-image">
+  <div class="testimonial-carousel owl-carousel">
+    <div class="testimonial-item">
+      <h3 class="testimonial-name">Cliente 1</h3>
+      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae congue est.</p>
     </div>
-
-    <div class="carousel-controls">
-      <button class="carousel-control prev">&lt;</button>
-      <button class="carousel-control next">&gt;</button>
+    <div class="testimonial-item">
+      <h3 class="testimonial-name">Cliente 2</h3>
+      <p class="testimonial-text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
     </div>
-
-    <div class="carousel-indicators">
-      <button class="carousel-indicator active"></button>
-      <button class="carousel-indicator"></button>
-      <button class="carousel-indicator"></button>
-    </div>
-
-    <div class="carousel-caption">
-      <h3 class="caption-title">Título de la imagen</h3>
-      <p class="caption-description">Descripción de la imagen.</p>
+    <div class="testimonial-item">
+      <h3 class="testimonial-name">Cliente 3</h3>
+      <p class="testimonial-text">Sed eu metus vel ante hendrerit cursus id vel nisi. Nunc viverra interdum nibh vitae lacinia.</p>
     </div>
   </div>
 
-  <script src="../../../plugins/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js"></script>
-  <script src="../../../plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.testimonial-carousel').owlCarousel({
+        items: 1,
+        loop: true,
+        nav: true,
+        dots: true,
+        navText: ['<', '>'],
+        autoplay: true,
+        autoplayTimeout: 5000
+      });
+    });
+  </script>
 </body>
 </html>

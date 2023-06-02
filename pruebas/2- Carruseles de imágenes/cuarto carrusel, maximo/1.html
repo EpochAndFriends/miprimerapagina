@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrusel de Galería de Imágenes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <style>
+    /* Estilos personalizados */
+    .owl-carousel {
+      width: 80%; /* Ajusta el ancho del carrusel según tus necesidades */
+      margin: 0 auto; /* Centra el carrusel horizontalmente */
+    }
+
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+      background-color: #f2f2f2;
+      border-radius: 50%;
+      color: #666;
+      font-size: 20px;
+      padding: 10px 12px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .owl-carousel .owl-nav button.owl-prev {
+      left: 10px;
+    }
+
+    .owl-carousel .owl-nav button.owl-next {
+      right: 10px;
+    }
+
+    .gallery-item {
+      text-align: center;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-gallery owl-carousel">
+    <div class="gallery-item">
+      <a href="../../../png/Zdibujo-fanny.png" target="_blank">
+        <img src="../../../png/Zdibujo-fanny.png" alt="Imagen 1">
+      </a>
+    </div>
+    <div class="gallery-item">
+      <a href="../../../png/Zdibujo-daniel.png" target="_blank">
+        <img src="../../../png/Zdibujo-daniel.png" alt="Imagen 2">
+      </a>
+    </div>
+    <div class="gallery-item">
+      <a href="../../../png/Zdibujo-dalila.png" target="_blank">
+        <img src="../../../png/Zdibujo-dalila.png" alt="Imagen 3">
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.image-gallery').owlCarousel({
+        items: 1,
+        loop: true,
+        nav: true,
+        dots: true,
+        navText: ['<', '>'],
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        autoWidth: true,
+        URLhashListener: true,
+        startPosition: 'URLHash',
+        lazyLoad: true,
+        autoHeight: true,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        onInitialized: callback,
+        onTranslate: callback,
+        onChanged: callback,
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1024: {
+            items: 3
+          }
+        },
+        rtl: false,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
+        freeDrag: false,
+        stagePadding: 0,
+        merge: false,
+        mergeFit: true,
+        autoWidth: false,
+        startPosition: 0,
+        URLhashListener: false,
+        navRewind: true,
+        slideBy: 1,
+        slideTransition: 'linear',
+        dotsSpeed: 200,
+        navSpeed: 200,
+        dragEndSpeed: 200,
+        callbacks: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseElement: window,
+        responsiveClass: false,
+        video: false,
+        videoHeight: false,
+        videoWidth: false,
+        videoAutoPlay: true,
+        videoStopOnLast: false,
+        videoLazyLoad: true,
+        videoLoop: true,
+        lazyLoadEager: 0,
+        preventClass: 'owl-prevented',
+        loadedClass: 'owl-loaded',
+        loadingClass: 'owl-loading',
+        rtlClass: 'owl-rtl',
+        responsiveClass: 'owl-responsive',
+        refreshClass: 'owl-refresh',
+        dragClass: 'owl-drag',
+        grabClass: 'owl-grab'
+      });
+
+      function callback(event) {
+        console.log('Evento:', event.type);
+      }
+    });
+  </script>
+</body>
+</html>

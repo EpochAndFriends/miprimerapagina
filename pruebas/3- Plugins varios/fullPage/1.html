@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Efecto de Desplazamiento Horizontal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css">
+  <style>
+    /* Estilos personalizados */
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+    }
+    #section1 {
+      background-color: #f2f2f2;
+    }
+    #section2 {
+      background-color: #eaeaea;
+    }
+    #section3 {
+      background-color: #dcdcdc;
+    }
+  </style>
+</head>
+<body>
+  <div id="fullpage">
+    <div class="section" id="section1">
+      <h2>Sección 1</h2>
+      <p>Contenido de la sección 1</p>
+    </div>
+    <div class="section" id="section2">
+      <h2>Sección 2</h2>
+      <p>Contenido de la sección 2</p>
+    </div>
+    <div class="section" id="section3">
+      <h2>Sección 3</h2>
+      <p>Contenido de la sección 3</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
+  <script>
+    new fullpage('#fullpage', {
+      // Opciones de fullPage.js
+      autoScrolling: true,
+      scrollHorizontally: true
+    });
+  </script>
+</body>
+</html>

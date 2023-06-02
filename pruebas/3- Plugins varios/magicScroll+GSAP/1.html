@@ -57,14 +57,19 @@
     #section3 {
       background-color: #dcdcdc;
     }
-    
+
     /* Estilos de las imágenes */
     .content img {
+      display: block; /* Ajusta las imágenes como elementos de bloque */
       max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
       height: auto; /* Ajusta la altura de la imagen de forma proporcional */
     }
-    
+
     /* Estilos del cuadro de texto */
+    .content .image-container {
+      display: flex; /* Utiliza flexbox para alinear la imagen y el cuadro de texto */
+      align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    }
     .content .text-box {
       margin-left: 20px; /* Espacio a la izquierda de la imagen */
       font-size: 1.5rem;
